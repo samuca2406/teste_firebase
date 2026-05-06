@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// 🔥 Config Firebase
+
 const firebaseConfig = {
   apiKey: "AIzaSyC6naHAFLKV8OBqsx3IQsdXNK661XuJklg",
   authDomain: "aula01-45478.firebaseapp.com",
@@ -11,22 +11,14 @@ const firebaseConfig = {
   appId: "1:350712180495:web:6e5585e2b64af12cc0187a"
 };
 
-// 🔥 Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-// 🔥 Espera o DOM carregar (evita erro de botão null)
 document.addEventListener("DOMContentLoaded", () => {
-
-    const btn = document.getElementById("btnCadastrar");
-
-    btn.addEventListener("click", async () => {
-
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        // 🔒 Validações básicas
-        if (!email || !password) {
+const btn = document.getElementById("btnCadastrar");
+btn.addEventListener("click", async () => {
+const email = document.getElementById('email').value.trim();
+const password = document.getElementById('password').value.trim();
+if (!email || !password) {
             alert("Preencha todos os campos!");
             return;
         }
@@ -43,8 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (error) {
             console.log("🔥 ERRO COMPLETO:", error);
-
-            // 🎯 Tratamento inteligente de erros
             switch (error.code) {
                 case "auth/email-already-in-use":
                     alert("Esse e-mail já está em uso.");
